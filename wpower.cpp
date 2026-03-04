@@ -319,6 +319,18 @@ bool WirelessPower::checkBalance() const {
   return isBalanced;
 }
 
+bool WirelessPower::checkBalance(const Customer *customer) const {
+  int isBalanced = true;
+  if (customer != nullptr) {
+    if (getBalanceFactor(customer) > 1 || getBalanceFactor(customer) < -1) {
+      return false;
+    }
+    isBalanced = isBalanced && checkBalance(customer->getLeft());
+    isBalanced = isBalanced && checkBalance(customer->getRight());
+  }
+  return isBalanced;
+}
+
 Customer *&WirelessPower::restructureIntoAVL(Customer *&root) {
   if (root == nullptr) {
     return root;

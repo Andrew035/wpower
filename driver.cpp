@@ -95,7 +95,7 @@ int main() {
       ID = idGen.getRandNum();
       if (i == custSize / 2)
         tempID = ID;
-      Customer customer(ID, rndLat.getRealRandNum(), rndLong.getRealNum());
+      Customer customer(ID, rndLat.getRealRandNum(), rndLong.getRealRandNum());
       powerSrc.insert(customer);
       cout << customer;
     }
